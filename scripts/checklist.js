@@ -15,8 +15,7 @@
             throw new Error('Could not find element with selector: ' + selector);
         }
     }
-    // accept a function argument, register event handle callback
-    // invoke function argument inside the event handler callback
+
     CheckList.prototype.addClickHandler = function (fn) {
         this.$element.on('click', 'input', function (event) {
             var email = event.target.value;
@@ -25,7 +24,6 @@
         }.bind(this));
     };
 
-    // Add Row to DOM subtree
     CheckList.prototype.addRow = function (coffeeOrder) {
         // Remove any existing rows that match the email address
         this.removeRow(coffeeOrder.emailAddress);
@@ -44,13 +42,19 @@
             .remove();
     };
 
+
+
+
+
     // Creates DOM elements to represent a single coffee order
     // Uses JQuery to build DOM elements
     function Row(coffeeOrder) {
+        // Constructor code 
         var $div = $('<div></div>', {
             'data-coffee-order': 'checkbox',
             'class': 'checkbox'
         });
+
 
         var $label = $('<label></label>');
 
@@ -59,7 +63,6 @@
             value: coffeeOrder.emailAddress
         });
 
-        // puts the order together
         var description = coffeeOrder.size + ' ';
         if (coffeeOrder.flavor) {
             description += coffeeOrder.flavor + ' ';
@@ -68,15 +71,15 @@
         description += coffeeOrder.coffee + ', ';
         description += ' (' + coffeeOrder.emailAddress + ')';
         description += ' [' + coffeeOrder.strength + 'x]';
+
+        $label.append($checkbox);
+        $label.append(description);
+        $div.append($label);
+
+        this.$element = $div;
     }
 
-    // checkbox label is not working
-    $label.append($checkbox);
-    $label.append(description);
-    $div.append($label);
 
-    // make subtree available 
-    this.$element = $div;
 
     App.CheckList = CheckList;
     window.App = App;
