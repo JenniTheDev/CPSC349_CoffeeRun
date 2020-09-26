@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <link href="payment-form.css" rel="stylesheet">
     <title>Payment Form</title>
+    <!--Modal Stylesheet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 
 <body>
@@ -86,11 +88,33 @@
                 <input type="date" id="date" name="expiration">
             </p>
         </section>
-        <p> <button type="submit">Validate the payment</button> </p>
+
+
+
+        <!-- <p> <button type="submit">Validate the payment</button> </p> -->
+
+        <!-- Modal HTML embedded directly into document -->
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn" button type="submit">Validate the Payment</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Thank you for your payment</p>
+            </div>
+
+
+
     </form>
     <script src="scripts/formhandler.js" charset="utf-8"></script>
     <script src="scripts/main.js" charset="utf-8"></script>
     <script src="scripts/datastore.js" charset="utf-8"></script>
+    <!-- Modal stuff here-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
 
 </body>
 
